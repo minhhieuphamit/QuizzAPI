@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
+var homeRouter = require("./routes/home");
 var authenRouter = require("./routes/authen");
 var difficultyLevelRouter = require("./routes/difficultyLevel");
 var subjectRouter = require("./routes/subject");
@@ -22,13 +23,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use("/", homeRouter);
 app.use("/api/v1/authen", authenRouter);
 app.use("/api/v1/difficulty-levels", difficultyLevelRouter);
 app.use("/api/v1/subjects", subjectRouter);
 app.use("/api/v1/questions", questionRouter);
 app.use("/api/v1/quizzes", quizzRouter);
 
-mongoose.connect("mongodb+srv://admin:Admin%40123@quizzapp.cbeg8m3.mongodb.net/Quizz_API");
+mongoose.connect(
+  "mongodb+srv://admin:Admin%40123@quizzapp.cbeg8m3.mongodb.net/Quizz_API"
+);
 mongoose.connection.once("open", function () {
   console.log("Connect database success");
 });
