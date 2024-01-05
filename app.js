@@ -28,7 +28,7 @@ app.use("/api/v1/subjects", subjectRouter);
 app.use("/api/v1/questions", questionRouter);
 app.use("/api/v1/quizzes", quizzRouter);
 
-mongoose.connect("mongodb+srv://admin:Admin%40123@quizzapp.cbeg8m3.mongodb.net/");
+mongoose.connect("mongodb+srv://admin:Admin%40123@quizzapp.cbeg8m3.mongodb.net/Quizz_API");
 mongoose.connection.once("open", function () {
   console.log("Connect database success");
 });
